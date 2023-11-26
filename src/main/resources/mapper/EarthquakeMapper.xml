@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kopo.poly.persistance.mapper.IEarthquakeMapper">
+
+    <!-- 수집된 실시간 지진 정보 DB에 등록하기 -->
+    <insert id="insertEarthquakeLiveInfo" parameterType="EarthquakeLiveDTO">
+        INSERT INTO EARTHQUAKE_LIVE
+        (EARTHQUAKE_LIVE_SEQ, CNT, FC_TP, IMG, IN_T, LAT, LOC, LON, MT, REM, STN_ID, TM_EQK, TM_FC,
+         TM_SEQ, DEP)
+        VALUES ((SELECT COALESCE(MAX(E.EARTHQUAKE_LIVE_SEQ), 0) + 1 FROM EARTHQUAKE_LIVE E),
+                #{cnt}, #{fcTp}, #{img}, #{inT}, #{lat}, #{loc}, #{lon}, #{mt}, #{rem}, #{stnId}, #{tmEqk}, #{tmFc},
+                #{tmSeq}, #{dep})
+    </insert>
+
+    <!-- 수집된 실시간 지진 정보 DB에서 삭제하기 -->
+    <delete id="deleteEarthquakeLiveInfo" parameterType="EarthquakeLiveDTO">
+        DELETE
+        FROM EARTHQUAKE_LIVE
+    </delete>
+
+</mapper>

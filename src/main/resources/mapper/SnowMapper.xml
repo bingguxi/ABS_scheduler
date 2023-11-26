@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="kopo.poly.persistance.mapper.ISnowMapper">
+
+    <!-- 수집된 적설 정보 DB에 등록 -->
+    <insert id="insertSnowInfo" parameterType="SnowDTO">
+        INSERT INTO SNOW
+            (STN_ID, STN_KO, LON, LAT, SD, DT)
+        VALUES (#{stnId}, #{stnKo}, #{lon}, #{lat}, #{sd}, #{dt})
+    </insert>
+
+    <delete id="deleteSnowInfo" parameterType="SnowDTO">
+        DELETE
+        FROM SNOW
+    </delete>
+
+    <update id="updateSnowInfo" parameterType="SnowDTO">
+        UPDATE SNOW
+        SET SD = #{sd}
+        WHERE STN_ID = #{stnId}
+    </update>
+
+</mapper>

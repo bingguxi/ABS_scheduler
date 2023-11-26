@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="kopo.poly.persistance.mapper.IDustMapper">
+
+    <update id="updateDustInfo" parameterType="DustDTO">
+        UPDATE DUST SET
+        MEAN = #{mean}
+        WHERE STN_ID = #{stnId}
+    </update>
+
+    <delete id="deleteDustInfo" parameterType="DustDTO">
+        DELETE
+        FROM DUST
+        WHERE STN_ID = #{stnId}
+    </delete>
+
+</mapper>
