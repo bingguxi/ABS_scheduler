@@ -19,4 +19,14 @@
         FROM EARTHQUAKE_LIVE
     </delete>
 
+    <!-- 실시간 업데이트시 기존 데이터 제외하고 저장하기 -->
+    <select id="getExists" parameterType="EarthquakeLiveDTO" resultType="EarthquakeLiveDTO">
+        SELECT
+            CASE WHEN COUNT(1) = 0 THEN 'N' ELSE 'Y' END AS EXISTSYN
+        FROM
+            EARTHQUAKE_LIVE
+        WHERE
+            TM_EQK = #{tmEqk}
+    </select>
+
 </mapper>
