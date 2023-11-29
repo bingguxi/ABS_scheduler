@@ -16,6 +16,7 @@ public class TyphoonLiveDTO {
     private String typ; // 태풍번호
     private String seq; // 발표번호
     private String typTm; // 태풍 분석시각 (UTC)
+    private String ftTm; // 태풍 예측시각 (UTC)
     private String lat; // 위도
     private String lon; // 경도
     private String dir; // 태풍진행방향 (16방위기호)
@@ -25,4 +26,5 @@ public class TyphoonLiveDTO {
     private String rad15; // 15m/s 반경 (km)
     private String rad25; // 25m/s 반경 (km)
     private String loc; // 위치
+    private String existsYn;
 }
