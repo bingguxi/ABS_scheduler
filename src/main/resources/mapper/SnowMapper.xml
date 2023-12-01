@@ -18,7 +18,8 @@
 
     <update id="updateSnowInfo" parameterType="SnowDTO">
         UPDATE SNOW
-        SET SD = #{sd}, DT = #{dt}
+        SET SD = #{sd},
+            DT = #{dt}
         WHERE STN_ID = #{stnId}
     </update>
 

@@ -77,7 +77,7 @@ public class SnowService {
 
             log.info("cm의 위치 : " + line.indexOf("(cm)"));
             log.info("#7777END의 위치 : " + line.indexOf("#7777END"));
-            line = line.substring(79, 36001).replaceAll(" ","");
+            line = line.substring(79, 36001);
 
             log.info("substring 결과 : " + line);
 
@@ -88,12 +88,12 @@ public class SnowService {
 
             // 3번째 줄부터 출력하기
             for (int i = 0; i < lines.length && (6 + 7 * i) < snowInfoArray.length; i++) {
-                pDTO.setDt(CmmUtil.nvl(snowInfoArray[7 * i].replaceAll("=", "")));
-                pDTO.setStnId(CmmUtil.nvl(snowInfoArray[1 + 7 * i]));
-                pDTO.setStnKo(CmmUtil.nvl(snowInfoArray[2 + 7 * i]));
-                pDTO.setLon(CmmUtil.nvl(snowInfoArray[3 + 7 * i]));
-                pDTO.setLat(CmmUtil.nvl(snowInfoArray[4 + 7 * i]));
-                pDTO.setSd(CmmUtil.nvl(snowInfoArray[6 + 7 * i]));
+                pDTO.setDt(CmmUtil.nvl(snowInfoArray[7 * i].replaceAll("=", "").trim()));
+                pDTO.setStnId(CmmUtil.nvl(snowInfoArray[1 + 7 * i]).trim());
+                pDTO.setStnKo(CmmUtil.nvl(snowInfoArray[2 + 7 * i]).trim());
+                pDTO.setLon(CmmUtil.nvl(snowInfoArray[3 + 7 * i]).trim());
+                pDTO.setLat(CmmUtil.nvl(snowInfoArray[4 + 7 * i]).trim());
+                pDTO.setSd(CmmUtil.nvl(snowInfoArray[6 + 7 * i]).trim());
 
                 log.info("-----------------------------------");
                 log.info("DT : " + pDTO.getDt());
@@ -161,7 +161,7 @@ public class SnowService {
 
             log.info("cm의 위치 : " + line.indexOf("(cm)"));
             log.info("#7777END의 위치 : " + line.indexOf("#7777END"));
-            line = line.substring(79, 36001).replaceAll(" ","");
+            line = line.substring(79, 36001);
 
             log.info("substring 결과 : " + line);
 
@@ -172,9 +172,9 @@ public class SnowService {
 
             // 3번째 줄부터 출력하기
             for (int i = 0; i < lines.length && (6 + 7 * i) < snowInfoArray.length; i++) {
-                pDTO.setDt(CmmUtil.nvl(snowInfoArray[7 * i].replaceAll("=", "")));
-                pDTO.setStnId(CmmUtil.nvl(snowInfoArray[1 + 7 * i]));
-                pDTO.setSd(CmmUtil.nvl(snowInfoArray[6 + 7 * i]));
+                pDTO.setDt(CmmUtil.nvl(snowInfoArray[7 * i].replaceAll("=", "").trim()));
+                pDTO.setStnId(CmmUtil.nvl(snowInfoArray[1 + 7 * i]).trim());
+                pDTO.setSd(CmmUtil.nvl(snowInfoArray[6 + 7 * i]).trim());
 
                 log.info("-----------------------------------");
                 log.info("DT : " + pDTO.getDt());
