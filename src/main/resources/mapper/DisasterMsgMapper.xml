@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="kopo.poly.persistance.mapper.IDisasterMsgMapper">
+
+    <!-- 수집된 재난문자 데이터 DB에 등록 -->
+    <insert id="insertDisasterMsgInfo" parameterType="DisasterMsgResultDTO">
+        INSERT INTO DISASTER_MSG
+            (CREATE_DATE, LOCATION_ID, LOCATION_NAME, MD101_SN, MSG, SEND_PLATFORM)
+        VALUES (#{createDate}, #{locationId}, #{locationName}, #{md101Sn}, #{msg}, #{sendPlatform})
+    </insert>
+
+    <!-- 수집된 재난문자 데이터 삭제 -->
+    <delete id="deleteDisasterMsgInfo" parameterType="DisasterMsgResultDTO">
+        DELETE
+        FROM DISASTER_MSG
+    </delete>
+
+</mapper>
