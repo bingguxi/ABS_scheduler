@@ -24,15 +24,9 @@ public class CctvService {
     String url = "https://openapi.its.go.kr:9443/cctvInfo";
 
     @Scheduled(cron = "0 55 23 * * *") // 매일 23시 55분 0초에 실행되게 설정!
-    public void manageCctvInfo() throws Exception {
+    public void updateCctvInfo() throws Exception {
 
-        log.info(this.getClass().getName() + ".manageCctvInfo 시작!");
-
-        log.info("모든 CCTV 정보를 DB에서 삭제합니다.");
-
-        cctvMapper.deleteCctvInfo();
-
-        log.info("삭제 완료!");
+        log.info(this.getClass().getName() + ".updateCctvInfo 시작!");
 
         String type = "ex";
         String cctvType = "1";
@@ -58,18 +52,16 @@ public class CctvService {
         List<Map<String, Object>> dataList = (List<Map<String, Object>>) dMap.get("data");
 
         for (Map<String, Object> dataMap : dataList) {
-            CctvResultDTO rDTO = new CctvResultDTO();
+            CctvResultDTO pDTO = new CctvResultDTO();
 
-            rDTO.setCoordX(String.valueOf(dataMap.get("coordx")));
-            rDTO.setCoordY(String.valueOf(dataMap.get("coordy")));
-            rDTO.setCctvName((String) dataMap.get("cctvname"));
-            rDTO.setCctvUrl((String) dataMap.get("cctvurl"));
+            pDTO.setCctvName((String) dataMap.get("cctvname"));
+            pDTO.setCctvUrl((String) dataMap.get("cctvurl"));
 
-            cctvMapper.insertCctvInfo(rDTO);
+            cctvMapper.updateCctvInfo(pDTO);
 
         }
 
-        log.info(this.getClass().getName() + ".manageCctvInfo 끝!");
+        log.info(this.getClass().getName() + ".updateCctvInfo 끝!");
 
     }
 
